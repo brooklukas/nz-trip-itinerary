@@ -1,0 +1,1367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Visual day-by-day itinerary for a New Zealand South Island road trip, 17-30 September 2026.">
+<title>South Island Loop — NZ, 17–30 Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+
+<style>
+  :root{
+    --ground:#E6EBE9;
+    --surface:#FBFCFB;
+    --surface-2:#F0F4F3;
+    --ink:#13201D;
+    --muted:#5B6B66;
+    --line:#CBD5D2;
+    --line-soft:#DDE4E2;
+    --accent:#0C6B70;
+    --accent-ink:#0A5458;
+    --accent-soft:#D6E6E6;
+    --gold:#9E6A1E;
+    --gold-bright:#C08A2E;
+    --gold-soft:#F0E3CB;
+    --shadow:0 1px 2px rgba(19,32,29,.05), 0 10px 26px -14px rgba(19,32,29,.22);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0C1514;
+      --surface:#15211F;
+      --surface-2:#1B2926;
+      --ink:#E3EAE7;
+      --muted:#94A6A1;
+      --line:#2C3D39;
+      --line-soft:#243430;
+      --accent:#54B9BD;
+      --accent-ink:#8ED5D7;
+      --accent-soft:#16393B;
+      --gold:#DFA850;
+      --gold-bright:#F0BC69;
+      --gold-soft:#3A2D16;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0C1514;
+    --surface:#15211F;
+    --surface-2:#1B2926;
+    --ink:#E3EAE7;
+    --muted:#94A6A1;
+    --line:#2C3D39;
+    --line-soft:#243430;
+    --accent:#54B9BD;
+    --accent-ink:#8ED5D7;
+    --accent-soft:#16393B;
+    --gold:#DFA850;
+    --gold-bright:#F0BC69;
+    --gold-soft:#3A2D16;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
+  }
+
+
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:40px 22px 80px;
+    display:flex;
+    flex-direction:column;
+    gap:38px;
+  }
+
+  /* ---------- header ---------- */
+  .masthead{display:flex;flex-direction:column;gap:14px}
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent-ink);
+    display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;
+  }
+  .eyebrow span{display:inline-flex;align-items:center;gap:7px}
+  h1{
+    font-size:clamp(38px,7vw,66px);
+    line-height:.95;
+    font-weight:800;
+    letter-spacing:-.025em;
+    margin:0;
+    text-wrap:balance;
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .dek{
+    font-family:"Newsreader",Georgia,serif;
+    font-size:19px;line-height:1.5;color:var(--muted);
+    max-width:56ch;margin:0;
+  }
+
+  /* ---------- stats ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .stat{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
+  .stat b{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:24px;font-weight:600;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;
+  }
+  .stat small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- panels ---------- */
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--line-soft);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+  .panel-head{
+    padding:18px 22px 0;
+    display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  h2{
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    margin:0;color:var(--ink);
+  }
+  .panel-head p{margin:0;font-size:13.5px;color:var(--muted);font-family:"Newsreader",Georgia,serif;font-size:15px}
+
+  /* ---------- shape of the trip ---------- */
+  .shape{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:26px;padding:22px}
+  @media (max-width:760px){ .shape{grid-template-columns:1fr} }
+  .shape svg{width:100%;height:auto;display:block}
+  .shape-notes{display:flex;flex-direction:column;gap:16px;align-self:center}
+  .leg{display:flex;gap:14px;align-items:flex-start}
+  .leg-key{
+    width:34px;height:5px;border-radius:3px;margin-top:9px;flex:none;
+  }
+  .leg-key.out{background:var(--accent)}
+  .leg-key.back{background:var(--gold-bright)}
+  .leg h3{margin:0 0 3px;font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .leg p{margin:0;font-size:14.5px;color:var(--muted);font-family:"Newsreader",Georgia,serif;font-size:16px;line-height:1.45}
+
+  /* ---------- legend ---------- */
+  .legend{
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;
+    padding:14px 22px;border-top:1px solid var(--line-soft);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  }
+  .legend i{display:inline-block;width:26px;height:6px;border-radius:3px;margin-right:8px;vertical-align:middle}
+  .lv1{background:var(--accent-soft)}
+  .lv2{background:var(--accent)}
+  .lv3{background:var(--gold-bright)}
+
+  /* ---------- timeline ---------- */
+  .timeline{display:flex;flex-direction:column;gap:0;position:relative}
+  .row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:0}
+  @media (max-width:560px){ .row{grid-template-columns:52px minmax(0,1fr)} }
+
+  .rail{position:relative;display:flex;justify-content:center}
+  .rail::before{
+    content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--line);
+  }
+  .row:first-child .rail::before{top:26px}
+  .row:last-child .rail::before{bottom:calc(100% - 26px)}
+
+  .dot{
+    position:relative;margin-top:16px;width:16px;height:16px;border-radius:50%;
+    background:var(--surface);border:3px solid var(--accent);flex:none;
+  }
+  .dot.gold{border-color:var(--gold-bright)}
+  .dot.hollow{border-color:var(--line);background:var(--ground)}
+
+  /* drive segment rows */
+  .seg{padding:12px 0 12px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+  .seg .bar{
+    position:relative;flex:1 1 200px;min-width:140px;max-width:340px;height:8px;
+    background:var(--surface-2);border-radius:5px;overflow:hidden;border:1px solid var(--line-soft);
+  }
+  .seg .bar span{position:absolute;inset:0 auto 0 0;border-radius:5px}
+  .seg .bar span.lv1{background:var(--accent-soft)}
+  .seg .bar span.lv2{background:var(--accent)}
+  .seg .bar span.lv3{background:var(--gold-bright)}
+  .seg .figs{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-variant-numeric:tabular-nums;
+    color:var(--muted);letter-spacing:.02em;white-space:nowrap;
+  }
+  .seg .figs b{color:var(--ink);font-weight:600}
+  .seg .via{font-size:12.5px;color:var(--muted);font-style:italic;font-family:"Newsreader",Georgia,serif;font-size:14.5px}
+  .rail.seg-rail .dot{display:none}
+
+  /* stop cards */
+  .stopwrap{padding:8px 0 8px 20px}
+  .stop{
+    background:var(--surface);
+    border:1px solid var(--line-soft);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .stop.rest{background:var(--surface-2);box-shadow:none}
+  .stop-top{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;
+    padding:15px 18px 12px;
+  }
+  .stop-top h3{
+    margin:0;font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.1;
+  }
+  .dates{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);
+    background:var(--accent-soft);border-radius:100px;padding:4px 11px;
+    font-variant-numeric:tabular-nums;
+  }
+  .nights{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:auto}
+  .doings{
+    list-style:none;margin:0;padding:0 18px 16px;
+    display:flex;flex-direction:column;gap:9px;
+  }
+  .doings li{display:flex;gap:11px;align-items:flex-start;font-size:15px;line-height:1.4}
+  .doings li svg{width:17px;height:17px;flex:none;margin-top:2px;color:var(--accent);opacity:.9}
+  .doings li .note{color:var(--muted);font-size:13.5px}
+  .tag{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:4px;
+    background:var(--gold-soft);color:var(--gold);margin-left:6px;vertical-align:1px;
+    white-space:nowrap;
+  }
+  .flightbar{
+    display:flex;align-items:center;gap:11px;padding:14px 18px;
+    background:var(--surface-2);border:1px dashed var(--line);border-radius:var(--radius);
+    font-size:15px;
+  }
+  .flightbar svg{width:18px;height:18px;color:var(--muted);flex:none}
+
+  /* ---------- booking board ---------- */
+  .board{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;padding:18px 22px 22px}
+  .book{
+    border:1px solid var(--line-soft);border-radius:12px;background:var(--surface-2);
+    padding:14px 15px;display:flex;flex-direction:column;gap:7px;position:relative;
+    border-left:4px solid var(--gold-bright);
+  }
+  .book.warm{border-left-color:var(--accent)}
+  .book h4{margin:0;font-size:15.5px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+  .book .when{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .book p{margin:0;font-family:"Newsreader",Georgia,serif;font-size:15.5px;line-height:1.4;color:var(--muted)}
+  .book .price{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--ink);
+    font-variant-numeric:tabular-nums;margin-top:auto;padding-top:4px;
+  }
+
+  /* ---------- plan B ---------- */
+  .bees{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;}
+  .bee{padding:18px 22px;border-top:1px solid var(--line-soft)}
+  .bee:not(:last-child){border-right:1px solid var(--line-soft)}
+  @media (max-width:700px){ .bee:not(:last-child){border-right:none} }
+  .bee h4{margin:0 0 6px;font-size:15px;font-weight:700;display:flex;gap:9px;align-items:center}
+  .bee h4 svg{width:17px;height:17px;color:var(--gold);flex:none}
+  .bee p{margin:0;font-family:"Newsreader",Georgia,serif;font-size:16px;line-height:1.45;color:var(--muted)}
+
+  footer{
+    text-align:center;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .stop{transition:transform .18s ease}
+  }
+
+  /* ---------- editor chrome ---------- */
+  .ed-cluster{
+    position:fixed;top:14px;right:14px;z-index:60;
+    display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px;
+  }
+  .ed-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--surface);color:var(--muted);
+    border:1px solid var(--line-soft);border-radius:100px;
+    padding:7px 13px;cursor:pointer;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;
+    box-shadow:var(--shadow);white-space:nowrap;
+  }
+  .ed-btn:hover{color:var(--ink);border-color:var(--line)}
+  .ed-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .ed-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  :root[data-theme="dark"] .ed-btn.on,
+  .ed-btn.on{color:var(--surface)}
+  .ed-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+  .ed-btn.primary:hover{color:var(--surface);opacity:.9}
+  .ed-btn[disabled]{opacity:.5;cursor:default}
+  .ed-status{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.1em;text-transform:uppercase;
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:100px;
+    padding:7px 13px;box-shadow:var(--shadow);color:var(--muted);max-width:60vw;
+  }
+  .ed-status.ok{color:var(--accent);border-color:var(--accent-soft)}
+  .ed-status.bad{color:var(--gold);border-color:var(--gold-soft);text-transform:none;letter-spacing:0;font-size:11.5px}
+
+  .wrap{padding-top:58px}   /* clears the fixed toolbar */
+
+  /* editable state */
+  body.editing [contenteditable]{
+    outline:1px dashed var(--line);outline-offset:3px;border-radius:3px;
+  }
+  body.editing [contenteditable]:hover{outline-color:var(--accent)}
+  body.editing [contenteditable]:focus{
+    outline:2px solid var(--accent);outline-offset:3px;background:var(--accent-soft);
+  }
+  body.editing .doings li svg{cursor:pointer;outline:1px dashed transparent;border-radius:3px}
+  body.editing .doings li svg:hover{outline-color:var(--accent)}
+  body.editing .book,body.editing .bee,body.editing .doings li{position:relative}
+
+  .ed-x{
+    position:absolute;top:6px;right:6px;z-index:2;
+    width:22px;height:22px;line-height:1;border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--surface);border:1px solid var(--line);color:var(--muted);
+    cursor:pointer;font-size:13px;padding:0;
+  }
+  .ed-x:hover{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
+  .doings li .ed-x{position:static;flex:none;margin-left:auto;align-self:flex-start}
+
+  .ed-tools{
+    display:flex;flex-wrap:wrap;gap:7px;align-items:center;
+    padding:10px 18px;border-top:1px dashed var(--line);
+    background:var(--surface-2);
+  }
+  .ed-mini{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:100px;
+    padding:5px 11px;cursor:pointer;color:var(--muted);
+  }
+  .ed-mini:hover{color:var(--ink);border-color:var(--accent)}
+  .ed-mini.danger:hover{color:var(--gold);border-color:var(--gold)}
+  .ed-seg{
+    display:inline-flex;align-items:center;gap:7px;margin-left:4px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  }
+  .ed-seg input{
+    width:56px;padding:4px 7px;border-radius:7px;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
+  }
+  .ed-add{
+    display:block;width:100%;margin:4px 0 0;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    background:transparent;border:1px dashed var(--line);border-radius:12px;
+    padding:12px;cursor:pointer;
+  }
+  .ed-add:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* settings dialog */
+  .ed-veil{
+    position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,20,18,.5);padding:20px;
+  }
+  .ed-dialog{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.5);
+    width:min(460px,100%);max-height:90vh;overflow:auto;padding:22px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .ed-dialog h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .ed-dialog p{margin:0;font-family:"Newsreader",Georgia,serif;font-size:15.5px;line-height:1.45;color:var(--muted)}
+  .ed-dialog p a{color:var(--accent)}
+  .ed-field{display:flex;flex-direction:column;gap:5px}
+  .ed-field label{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  }
+  .ed-field input{
+    padding:9px 11px;border-radius:9px;border:1px solid var(--line);
+    background:var(--ground);color:var(--ink);font-size:14px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  .ed-field input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .ed-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ed-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;margin-top:2px}
+
+  @media print{
+    .ed-cluster,.ed-tools,.ed-x,.ed-add,.ed-status{display:none!important}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.6L20 9.6l-4 4.1.9 5.9L12 16.9 7.1 19.6 8 13.7l-4-4.1 5.6-1z"/></symbol>
+    <symbol id="i-mtn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20L14.5 6 11 12.5 8.8 9z"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="1.8"/><path d="M11 21l1.6-5.5L10 13l.8-4.4L14 7l3 2.4 2.4 1"/><path d="M10.8 8.6L7 11l-1.4 3.4"/><path d="M12.6 15.5L16 21"/></symbol>
+    <symbol id="i-boat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18c1.6 0 1.6 1.4 3.2 1.4S7.8 18 9.4 18s1.6 1.4 3.2 1.4S14.2 18 15.8 18s1.6 1.4 3.2 1.4"/><path d="M4.5 15l1.3-4.5h12.4L19.5 15z"/><path d="M12 10.5V4l5 2.5"/></symbol>
+    <symbol id="i-steam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18"/><path d="M5 16c1.4 0 1.4-1.2 2.8-1.2S9.2 16 10.6 16 12 14.8 13.4 14.8 14.8 16 16.2 16 17.6 14.8 19 14.8"/><path d="M8 11c-1-1.6.4-2.4-.6-4M12 10c-1-1.6.4-2.6-.6-4.4M16 11c-1-1.6.4-2.4-.6-4"/></symbol>
+    <symbol id="i-heli" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M12 5v3"/><path d="M6.5 12.5h7a4 4 0 013.9 3.1l.3 1.4H9a2.5 2.5 0 01-2.5-2.5z" /><path d="M6.5 8v9M4 19h9"/></symbol>
+    <symbol id="i-bird" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5c-1.2 5.6-4.6 9.5-9.4 9.5C6.3 16 4 13.2 4 10.4c0-2 1.3-3.4 3-3.4 1.4 0 2.4 1 2.4 2.2"/><path d="M9.4 9.2h.01"/><path d="M11 15.8L9 21M14.5 14L14 21"/></symbol>
+    <symbol id="i-water" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.4 6 10.2A6 6 0 016 13.2C6 9.4 12 3 12 3z"/></symbol>
+    <symbol id="i-town" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l5-3 5 3v12"/><path d="M13 21V13h8v8"/><path d="M6.5 12h3M6.5 16h3M16 17h2"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20l1.6-6.2 6.7 3.1a1 1 0 001.4-1.1l-2-9.4a2 2 0 00-3.3-1.1L4.2 15.1a1 1 0 00.3 1.7l3.6 1.2z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17.2h.01"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v2.5M20 16v2.5"/><path d="M3 16v-3.2l1.8-4A2 2 0 016.6 7.5h10.8a2 2 0 011.8 1.3l1.8 4V16z"/><path d="M4.5 12.5h15M7 16h1.5M15.5 16H17"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span><svg width="13" height="13"><use href="#i-cal"/></svg>17 – 30 September 2026</span>
+      <span>Two travellers</span>
+      <span>Christchurch in, Christchurch out</span>
+    </div>
+    <h1>South Island<br><em>Loop</em></h1>
+    <p class="dek">Down the middle, across to Fiordland, back up the West Coast. Nine places, thirteen nights, and only two days where you spend real time in the car.</p>
+  </header>
+
+  <section class="stats" aria-label="Trip at a glance">
+    <div class="stat"><b>13</b><small>Nights</small></div>
+    <div class="stat"><b>9</b><small>Places to stay</small></div>
+    <div class="stat"><b>2,050</b><small>Kilometres</small></div>
+    <div class="stat"><b>3</b><small>Days with no driving</small></div>
+    <div class="stat"><b>2</b><small>Long drive days</small></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>The shape of the trip</h2>
+      <p>Not a map — just the loop, so you can see it in one look.</p>
+    </div>
+    <div class="shape">
+      <svg viewBox="0 32 372 400" role="img" aria-label="Schematic loop: Christchurch south through Tekapo, Twizel, Wanaka, Queenstown to Te Anau and Milford Sound, then north via Franz Josef and Hokitika back to Christchurch.">
+        <!-- outbound -->
+        <path d="M312 62 C 275 100, 250 120, 236 152 C 226 178, 222 186, 218 208 C 210 240, 196 252, 178 272 C 162 290, 152 300, 142 316 C 124 344, 112 372, 96 398"
+              fill="none" stroke="var(--accent)" stroke-width="3.4" stroke-linecap="round"/>
+        <!-- milford spur -->
+        <path d="M96 398 C 78 378, 68 362, 62 342"
+              fill="none" stroke="var(--accent)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="1 8" stroke-linejoin="round"/>
+        <!-- return -->
+        <path d="M96 398 C 112 356, 128 322, 160 280 C 146 258, 128 244, 112 222 C 100 202, 96 186, 100 166 C 108 138, 140 118, 176 106 C 226 90, 274 76, 312 62"
+              fill="none" stroke="var(--gold-bright)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="9 8"/>
+
+        <g font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="var(--ink)">
+          <circle cx="312" cy="62" r="7" fill="var(--surface)" stroke="var(--ink)" stroke-width="3"/>
+          <text x="300" y="46" text-anchor="end">Christchurch</text>
+
+          <circle cx="236" cy="152" r="5.5" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+          <text x="248" y="150">Tekapo</text>
+
+          <circle cx="218" cy="208" r="5.5" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+          <text x="230" y="212">Twizel</text>
+
+          <circle cx="178" cy="272" r="5.5" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+          <text x="190" y="276">Wanaka</text>
+
+          <circle cx="142" cy="316" r="5.5" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+          <text x="154" y="320">Queenstown</text>
+
+          <circle cx="96" cy="398" r="5.5" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+          <text x="108" y="414">Te Anau</text>
+
+          <circle cx="62" cy="342" r="5.5" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+          <text x="52" y="336" text-anchor="end">Milford</text>
+
+          <circle cx="112" cy="222" r="5.5" fill="var(--surface)" stroke="var(--gold-bright)" stroke-width="3"/>
+          <text x="102" y="226" text-anchor="end">Franz Josef</text>
+
+          <circle cx="100" cy="166" r="5.5" fill="var(--surface)" stroke="var(--gold-bright)" stroke-width="3"/>
+          <text x="90" y="164" text-anchor="end">Hokitika</text>
+        </g>
+      </svg>
+
+      <div class="shape-notes">
+        <div class="leg">
+          <div class="leg-key out"></div>
+          <div>
+            <h3>Days 1–8 · heading down</h3>
+            <p>Inland through the lakes and passes to Queenstown, then west into Fiordland. Short hops, one or two nights each.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-key back"></div>
+          <div>
+            <h3>Days 9–13 · coming back</h3>
+            <p>Back through Wanaka, over Haast Pass to the glaciers, up the coast, then over Arthur's Pass into Christchurch.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-key" style="background:var(--line)"></div>
+          <div>
+            <h3>The one repeat</h3>
+            <p>Te&nbsp;Anau back to Wanaka retraces the middle. Unavoidable — it's the only road north.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i class="lv1"></i>Under 1 hr</span>
+      <span><i class="lv2"></i>1 – 3 hrs</span>
+      <span><i class="lv3"></i>Over 4 hrs — pack snacks</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head" style="padding-bottom:6px">
+      <h2>Day by day</h2>
+      <p>Every drive, drawn to scale. Long bar = long day.</p>
+    </div>
+
+    <div class="timeline" style="padding:10px 18px 22px 4px">
+
+      <!-- 17 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Christchurch → Tekapo</b></span>
+          <div class="bar"><span class="lv2" style="width:60%"></span></div>
+          <span class="figs">3 hr 00 · 230 km</span>
+          <span class="via">via the Canterbury plains</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Wed 17 Sep</span>
+              <h3>Lake Tekapo</h3>
+              <span class="nights">1 night</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-star"/></svg><span>Dark Sky Summit stargazing on Mt John <span class="tag">book now</span><br><span class="note">Best night sky in the country. Tiny groups — this sells out first.</span></span></li>
+              <li><svg><use href="#i-steam"/></svg><span>Tekapo Springs hot pools <span class="note">— the perfect thing after a flight and a drive</span></span></li>
+              <li><svg><use href="#i-town"/></svg><span>Church of the Good Shepherd at dusk</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 18 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Tekapo → Twizel</b></span>
+          <div class="bar"><span class="lv1" style="width:14%"></span></div>
+          <span class="figs">0 hr 50 · 60 km</span>
+          <span class="via">past Lake Pukaki</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Thu 18 Sep</span>
+              <h3>Twizel</h3>
+              <span class="nights">1 night</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-walk"/></svg><span>Hooker Valley Track at Aoraki / Mt Cook <span class="note">— 3 hrs return, flat, three swing bridges, glacier at the end. The easiest big view in NZ.</span></span></li>
+              <li><svg><use href="#i-mtn"/></svg><span>Tasman Glacier lookout <span class="note">— 40 min walk, icebergs on the lake</span></span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 19 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Twizel → Wanaka</b></span>
+          <div class="bar"><span class="lv2" style="width:42%"></span></div>
+          <span class="figs">2 hr 10 · 155 km</span>
+          <span class="via">over the Lindis Pass</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Fri 19 Sep</span>
+              <h3>Wanaka</h3>
+              <span class="nights">1 night</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-water"/></svg><span>That Wanaka Tree + the lakefront walk <span class="note">— go at sunset</span></span></li>
+              <li><svg><use href="#i-walk"/></svg><span>Diamond Lake lookout <span class="note">— 1 hr, the short version of the Roys Peak view</span></span></li>
+              <li><svg><use href="#i-town"/></svg><span>Rippon winery tasting <span class="note">— limited spring hours, check ahead</span></span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 20-22 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Wanaka → Queenstown</b></span>
+          <div class="bar"><span class="lv1" style="width:20%"></span></div>
+          <span class="figs">1 hr 10 · 70 km</span>
+          <span class="via">over the Crown Range — stop in Arrowtown</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Sun 20 – Tue 22 Sep</span>
+              <h3>Queenstown</h3>
+              <span class="nights">3 nights</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-mtn"/></svg><span>Skyline gondola + unlimited luge <span class="note">— $140 ea</span></span></li>
+              <li><svg><use href="#i-boat"/></svg><span>TSS Earnslaw steamship to Walter Peak farm <span class="note">— from $139 ea, half a day</span></span></li>
+              <li><svg><use href="#i-steam"/></svg><span>Onsen private hot pools <span class="tag">book now</span><br><span class="note">Books out weeks ahead. $125 ea.</span></span></li>
+              <li><svg><use href="#i-car"/></svg><span>Drive out to Glenorchy <span class="note">— 45 min each way, no booking, best free thing here</span></span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 23 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Queenstown → Te Anau</b></span>
+          <div class="bar"><span class="lv2" style="width:45%"></span></div>
+          <span class="figs">2 hr 15 · 170 km</span>
+          <span class="via">leave after lunch, arrive for dinner</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Wed 23 Sep</span>
+              <h3>Te Anau</h3>
+              <span class="nights">2 nights</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-water"/></svg><span>Nothing scheduled. That's the point. <span class="note">— the second night here is what stops Milford being a nightmare</span></span></li>
+              <li><svg><use href="#i-walk"/></svg><span>Lakeside stroll on the start of the Kepler Track <span class="note">— flat, 30–60 min</span></span></li>
+              <li><svg><use href="#i-bird"/></svg><span>Te Anau glowworm caves <span class="note">— 2 hr evening trip if you want one</span></span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 24 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Te Anau → Milford → Te Anau</b></span>
+          <div class="bar"><span class="lv2" style="width:54%"></span></div>
+          <span class="figs">2 hr 15 each way · 240 km return</span>
+          <span class="via">the drive is half the experience</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Thu 24 Sep</span>
+              <h3>Milford Sound</h3>
+              <span class="nights">day trip</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-boat"/></svg><span>Midday cruise, roughly 12:30–1pm departure <span class="tag">book now</span><br><span class="note">Leave Te Anau ~9am. Home for dinner. No dawn alarm, no long drive afterwards.</span></span></li>
+              <li><svg><use href="#i-water"/></svg><span>Mirror Lakes + The Chasm on the way <span class="note">— 10 min each, right by the road</span></span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 25 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Te Anau → Wanaka</b></span>
+          <div class="bar"><span class="lv3" style="width:90%"></span></div>
+          <span class="figs">4 hr 30 · 365 km</span>
+          <span class="via">long day one of two</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot gold"></div></div>
+        <div class="stopwrap">
+          <article class="stop rest">
+            <div class="stop-top">
+              <span class="dates">Fri 25 Sep</span>
+              <h3>Wanaka</h3>
+              <span class="nights">1 night · staging stop</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-town"/></svg><span>A driving day. Book somewhere comfortable with a view and do nothing. <span class="note">— you already saw Wanaka on the 19th, so there's no pressure to tick anything off</span></span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 26-27 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Wanaka → Franz Josef</b></span>
+          <div class="bar"><span class="lv3" style="width:100%"></span></div>
+          <span class="figs">5 hr 00 · 375 km</span>
+          <span class="via">over Haast Pass — the best drive of the trip</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot gold"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Sat 26 – Sun 27 Sep</span>
+              <h3>Franz Josef</h3>
+              <span class="nights">2 nights</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-heli"/></svg><span>Glacier heli hike <span class="tag">book now</span><br><span class="note">$679 ea. Book it for the 27th — that leaves the 28th morning spare if weather cancels.</span></span></li>
+              <li><svg><use href="#i-walk"/></svg><span>Glacier Valley guided walk <span class="note">— $95 ea, runs when the helicopters are grounded. This is your plan B.</span></span></li>
+              <li><svg><use href="#i-bird"/></svg><span>Okarito night kiwi tour <span class="tag">book now</span><br><span class="note">Max 8 people, one tour a night. Wild kiwi, 30 min down the road.</span></span></li>
+              <li><svg><use href="#i-steam"/></svg><span>Glacier Hot Pools in the rainforest</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 28 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Franz Josef → Hokitika</b></span>
+          <div class="bar"><span class="lv2" style="width:45%"></span></div>
+          <span class="figs">2 hr 15 · 135 km</span>
+          <span class="via">coast road, sea on your left</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Mon 28 Sep</span>
+              <h3>Hokitika</h3>
+              <span class="nights">1 night</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-water"/></svg><span>Hokitika Gorge <span class="note">— 35 min drive, 1 hr loop walk, unreal turquoise water</span></span></li>
+              <li><svg><use href="#i-bird"/></svg><span>Glowworm Dell after dark <span class="note">— free, 5 min from town</span></span></li>
+              <li><svg><use href="#i-town"/></svg><span>Driftwood beach + pounamu (greenstone) carvers</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 29 -->
+      <div class="row">
+        <div class="rail seg-rail"><div class="dot"></div></div>
+        <div class="seg">
+          <span class="figs"><b>Hokitika → Christchurch</b></span>
+          <div class="bar"><span class="lv2" style="width:70%"></span></div>
+          <span class="figs">3 hr 30 · 250 km</span>
+          <span class="via">over Arthur's Pass — stop at Castle Hill</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rail"><div class="dot"></div></div>
+        <div class="stopwrap">
+          <article class="stop">
+            <div class="stop-top">
+              <span class="dates">Tue 29 Sep</span>
+              <h3>Christchurch</h3>
+              <span class="nights">1 night</span>
+            </div>
+            <ul class="doings">
+              <li><svg><use href="#i-mtn"/></svg><span>Castle Hill boulders on the way in <span class="note">— 20 min stop, giant limestone rocks</span></span></li>
+              <li><svg><use href="#i-town"/></svg><span>Drop the car, stay near the airport or in town, eat something that isn't a service station pie</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- 30 -->
+      <div class="row">
+        <div class="rail"><div class="dot hollow"></div></div>
+        <div class="stopwrap">
+          <div class="flightbar">
+            <svg><use href="#i-plane"/></svg>
+            <span><b>Wed 30 Sep</b> — fly home from Christchurch</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Book these five first</h2>
+      <p>Everything else can wait. These are the ones that sell out or cancel.</p>
+    </div>
+    <div class="board">
+      <div class="book">
+        <span class="when">17 Sep · Tekapo</span>
+        <h4>Dark Sky Summit, Mt John</h4>
+        <p>Tiny groups, and every cloudy night dumps more people into the rebooking queue.</p>
+        <span class="price">$219 ea</span>
+      </div>
+      <div class="book">
+        <span class="when">24 Sep · Milford</span>
+        <h4>Milford Sound cruise</h4>
+        <p>Midday departure. The boutique boat is $199; the cruise-plus-scenic-flight is $749 — pick one.</p>
+        <span class="price">$199 ea</span>
+      </div>
+      <div class="book">
+        <span class="when">27 Sep · Franz Josef</span>
+        <h4>Glacier heli hike</h4>
+        <p>Cancels constantly for weather. Booking it on your second day gives you a spare morning.</p>
+        <span class="price">$679 ea</span>
+      </div>
+      <div class="book">
+        <span class="when">26 or 27 Sep · Okarito</span>
+        <h4>Night kiwi tour</h4>
+        <p>Eight people, one tour a night. There is no second chance on this one.</p>
+        <span class="price">$85 ea</span>
+      </div>
+      <div class="book warm">
+        <span class="when">20–22 Sep · Queenstown</span>
+        <h4>Onsen private hot pools</h4>
+        <p>Books out weeks ahead. Not urgent like the others, but don't leave it to the week before.</p>
+        <span class="price">$125 ea</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Three things to know</h2>
+      <p>So nothing catches you out.</p>
+    </div>
+    <div class="bees">
+      <div class="bee">
+        <h4><svg><use href="#i-alert"/></svg>Haast Pass can close</h4>
+        <p>It's the only road from Wanaka to the coast. Check the NZTA app the night before the 26th. If it's shut, the fallback is a second Wanaka night and Arthur's Pass straight to Christchurch.</p>
+      </div>
+      <div class="bee">
+        <h4><svg><use href="#i-alert"/></svg>September is shoulder season</h4>
+        <p>Snow still on the passes, some walks closed, shorter hours everywhere. Upside: no crowds and no queues at Milford.</p>
+      </div>
+      <div class="bee">
+        <h4><svg><use href="#i-alert"/></svg>Don't book a scenic flight everywhere</h4>
+        <p>Tekapo, Wanaka and Franz Josef all offer one, and all three is about $1,500 each. Franz Josef is the one worth it.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Christchurch → Tekapo → Twizel → Wanaka → Queenstown → Te Anau → Milford → Wanaka → Franz Josef → Hokitika → Christchurch</footer>
+
+</div>
+
+<script>
+/* =====================================================================
+   South Island Loop — page editor
+   Everything below is self-contained. It adds:
+     • a light/dark toggle
+     • an Edit mode (click any text to change it, add/remove rows)
+     • Save, which commits this whole file back to GitHub
+   Editor controls are built at runtime and stripped out before saving,
+   so the file that lands in your repo stays clean.
+   ===================================================================== */
+(function () {
+  "use strict";
+
+  var LS_THEME = "sil-theme";
+  var LS_GH    = "sil-github";
+  var ICONS = ["i-star","i-mtn","i-walk","i-boat","i-steam","i-heli",
+               "i-bird","i-water","i-town","i-car","i-plane","i-alert","i-cal"];
+
+  var root = document.documentElement;
+  var body = document.body;
+  var editing = false;
+  var dirty = false;
+
+  /* ---------------- tiny helpers ---------------- */
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    n.setAttribute("data-ed", "");
+    return n;
+  }
+  function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+  function store(key, val) {
+    try { val === null ? localStorage.removeItem(key) : localStorage.setItem(key, val); } catch (e) {}
+  }
+  function read(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+  /* ---------------- toolbar ---------------- */
+  var cluster = el("div", "ed-cluster");
+  var themeBtn = el("button", "ed-btn"); themeBtn.type = "button";
+  var editBtn  = el("button", "ed-btn"); editBtn.type = "button"; editBtn.textContent = "Edit";
+  var saveBtn  = el("button", "ed-btn primary"); saveBtn.type = "button"; saveBtn.textContent = "Save"; saveBtn.hidden = true;
+  var gearBtn  = el("button", "ed-btn"); gearBtn.type = "button"; gearBtn.textContent = "Settings"; gearBtn.hidden = true;
+  var status   = el("div", "ed-status"); status.hidden = true;
+  cluster.append(status, themeBtn, gearBtn, saveBtn, editBtn);
+  body.appendChild(cluster);
+
+  function say(msg, kind) {
+    status.hidden = !msg;
+    status.textContent = msg || "";
+    status.className = "ed-status" + (kind ? " " + kind : "");
+    status.setAttribute("data-ed", "");
+  }
+
+  /* ---------------- theme ---------------- */
+  var saved = read(LS_THEME);
+  if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+  function isDark() {
+    var t = root.getAttribute("data-theme");
+    return t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function syncTheme() { themeBtn.textContent = isDark() ? "Light" : "Dark"; }
+  syncTheme();
+  themeBtn.addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    store(LS_THEME, next);
+    syncTheme();
+  });
+
+  /* ---------------- what is editable ---------------- */
+  var EDITABLE = [
+    "h1", ".dek", ".stat b", ".stat small", "h2", ".panel-head p",
+    ".leg h3", ".leg p", ".legend span",
+    ".stop-top h3", ".dates", ".nights", ".doings li > span",
+    ".seg .figs", ".seg .via", ".flightbar span",
+    ".book h4", ".book p", ".book .when", ".book .price",
+    ".bee h4", ".bee p", "footer"
+  ].join(",");
+
+  function plainPaste(e) {
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+    document.execCommand("insertText", false, text);
+  }
+
+  function markDirty() {
+    if (!dirty) { dirty = true; say("Unsaved changes"); }
+  }
+
+  /* ---------------- row templates ---------------- */
+  function tpl(html) {
+    var t = document.createElement("template");
+    t.innerHTML = html.trim();
+    return t.content;
+  }
+  var T = {
+    activity: '<li><svg><use href="#i-town"></use></svg><span>Something to do <span class="note">— a detail</span></span></li>',
+    seg: '<div class="row">' +
+           '<div class="rail seg-rail"><div class="dot"></div></div>' +
+           '<div class="seg">' +
+             '<span class="figs"><b>From → To</b></span>' +
+             '<div class="bar"><span class="lv2" style="width:40%"></span></div>' +
+             '<span class="figs">2 hr 00 · 150 km</span>' +
+             '<span class="via">via somewhere</span>' +
+           '</div></div>',
+    stop: '<div class="row">' +
+            '<div class="rail"><div class="dot"></div></div>' +
+            '<div class="stopwrap"><article class="stop">' +
+              '<div class="stop-top"><span class="dates">Day 00 Mon</span><h3>New stop</h3><span class="nights">1 night</span></div>' +
+              '<ul class="doings"><li><svg><use href="#i-town"></use></svg><span>Something to do <span class="note">— a detail</span></span></li></ul>' +
+            '</article></div></div>',
+    book: '<div class="book">' +
+            '<span class="when">Date · Place</span>' +
+            '<h4>Thing to book</h4>' +
+            '<p>Why it needs booking early.</p>' +
+            '<span class="price">$0 ea</span></div>',
+    bee: '<div class="bee"><h4><svg><use href="#i-alert"></use></svg>Something to know</h4>' +
+         '<p>The detail that saves you a headache.</p></div>'
+  };
+
+  /* ---------------- build / tear down edit controls ---------------- */
+  function xButton(onClick, title) {
+    var b = el("button", "ed-x", "×");
+    b.type = "button";
+    b.title = title || "Remove";
+    b.setAttribute("aria-label", title || "Remove");
+    b.addEventListener("click", function (e) { e.preventDefault(); onClick(); markDirty(); });
+    return b;
+  }
+  function mini(label, cls, onClick) {
+    var b = el("button", "ed-mini" + (cls ? " " + cls : ""), label);
+    b.type = "button";
+    b.addEventListener("click", function (e) { e.preventDefault(); onClick(); markDirty(); });
+    return b;
+  }
+
+  function hoursToBar(barSpan, hours) {
+    var pct = Math.max(4, Math.min(100, (hours / 5) * 100));
+    barSpan.style.width = pct.toFixed(0) + "%";
+    barSpan.className = hours < 1 ? "lv1" : (hours < 4 ? "lv2" : "lv3");
+  }
+
+  function addChrome() {
+    /* text fields */
+    $$(EDITABLE).forEach(function (n) {
+      n.setAttribute("contenteditable", "true");
+      n.setAttribute("spellcheck", "false");
+      n.addEventListener("paste", plainPaste);
+    });
+
+    /* icon cycling */
+    $$(".doings li svg, .bee h4 svg").forEach(function (svg) {
+      svg.style.cursor = "pointer";
+      svg.title = "Click to change the icon";
+    });
+
+    /* activity rows */
+    $$(".doings li").forEach(function (li) {
+      li.appendChild(xButton(function () { li.remove(); }, "Remove this line"));
+    });
+
+    /* stop cards */
+    $$(".timeline .stop").forEach(function (stop) {
+      var tools = el("div", "ed-tools");
+      var list = $(".doings", stop);
+      tools.appendChild(mini("+ activity", "", function () {
+        if (list) list.appendChild(tpl(T.activity).firstElementChild);
+        refresh();
+      }));
+      tools.appendChild(mini("+ stop below", "", function () {
+        var row = stop.closest(".row");
+        row.after(tpl(T.stop).firstElementChild);
+        row.after(tpl(T.seg).firstElementChild);
+        refresh();
+      }));
+      tools.appendChild(mini("delete stop", "danger", function () {
+        var row = stop.closest(".row");
+        var prev = row.previousElementSibling;
+        if (prev && $(".seg", prev)) prev.remove();
+        row.remove();
+        refresh();
+      }));
+      stop.appendChild(tools);
+    });
+
+    /* drive bars */
+    $$(".timeline .seg").forEach(function (seg) {
+      var span = $(".bar span", seg);
+      if (!span) return;
+      var current = (parseFloat(span.style.width) || 40) / 100 * 5;
+      var wrap = el("span", "ed-seg");
+      var lab = el("span", null, "bar hrs");
+      var inp = el("input");
+      inp.type = "number"; inp.step = "0.25"; inp.min = "0"; inp.max = "12";
+      inp.value = current.toFixed(2).replace(/\.?0+$/, "");
+      inp.addEventListener("input", function () {
+        var h = parseFloat(inp.value);
+        if (!isNaN(h)) { hoursToBar(span, h); markDirty(); }
+      });
+      wrap.append(lab, inp);
+      seg.appendChild(wrap);
+    });
+
+    /* booking cards */
+    $$(".board .book").forEach(function (card) {
+      card.appendChild(xButton(function () { card.remove(); }, "Remove this booking"));
+    });
+    var board = $(".board");
+    if (board) {
+      var addBook = el("button", "ed-add", "+ add a booking");
+      addBook.type = "button";
+      addBook.style.gridColumn = "1 / -1";
+      addBook.addEventListener("click", function (e) {
+        e.preventDefault();
+        board.insertBefore(tpl(T.book).firstElementChild, addBook);
+        refresh(); markDirty();
+      });
+      board.appendChild(addBook);
+    }
+
+    /* things to know */
+    $$(".bees .bee").forEach(function (b) {
+      b.appendChild(xButton(function () { b.remove(); }, "Remove this note"));
+    });
+    var bees = $(".bees");
+    if (bees) {
+      var addBee = el("button", "ed-add", "+ add a note");
+      addBee.type = "button";
+      addBee.style.gridColumn = "1 / -1";
+      addBee.style.margin = "0";
+      addBee.addEventListener("click", function (e) {
+        e.preventDefault();
+        bees.insertBefore(tpl(T.bee).firstElementChild, addBee);
+        refresh(); markDirty();
+      });
+      bees.appendChild(addBee);
+    }
+  }
+
+  function removeChrome() {
+    $$("[data-ed]").forEach(function (n) {
+      if (n === cluster || cluster.contains(n)) return;
+      n.remove();
+    });
+    $$("[contenteditable]").forEach(function (n) {
+      n.removeAttribute("contenteditable");
+      n.removeAttribute("spellcheck");
+      n.removeEventListener("paste", plainPaste);
+    });
+    $$(".doings li svg, .bee h4 svg").forEach(function (svg) {
+      svg.style.cursor = ""; svg.removeAttribute("title");
+    });
+  }
+
+  function refresh() { removeChrome(); addChrome(); }
+
+  /* icon cycling (delegated so it survives refresh) */
+  document.addEventListener("click", function (e) {
+    if (!editing) return;
+    var svg = e.target.closest && e.target.closest(".doings li svg, .bee h4 svg");
+    if (!svg) return;
+    var use = svg.querySelector("use");
+    if (!use) return;
+    var cur = (use.getAttribute("href") || use.getAttribute("xlink:href") || "").replace("#", "");
+    var next = ICONS[(ICONS.indexOf(cur) + 1) % ICONS.length];
+    use.setAttribute("href", "#" + next);
+    use.removeAttribute("xlink:href");
+    markDirty();
+  });
+
+  document.addEventListener("input", function (e) {
+    if (editing && e.target.isContentEditable) markDirty();
+  });
+
+  /* ---------------- edit mode ---------------- */
+  function setEditing(on) {
+    editing = on;
+    body.classList.toggle("editing", on);
+    editBtn.textContent = on ? "Done" : "Edit";
+    editBtn.classList.toggle("on", on);
+    saveBtn.hidden = !on;
+    gearBtn.hidden = !on;
+    if (on) { addChrome(); say(dirty ? "Unsaved changes" : "Click any text to edit it"); }
+    else { removeChrome(); if (!dirty) say(""); }
+  }
+  editBtn.addEventListener("click", function () { setEditing(!editing); });
+
+  window.addEventListener("beforeunload", function (e) {
+    if (dirty) { e.preventDefault(); e.returnValue = ""; }
+  });
+
+  /* ---------------- serialise the page ---------------- */
+  function serialize() {
+    var wasEditing = editing;
+    if (wasEditing) removeChrome();
+    var clone = root.cloneNode(true);
+    clone.removeAttribute("data-theme");
+    $$("[data-ed]", clone).forEach(function (n) { n.remove(); });
+    $$("[contenteditable]", clone).forEach(function (n) {
+      n.removeAttribute("contenteditable");
+      n.removeAttribute("spellcheck");
+    });
+    var b = clone.querySelector("body");
+    if (b) { b.classList.remove("editing"); if (!b.className) b.removeAttribute("class"); }
+    $$(".doings li svg, .bee h4 svg", clone).forEach(function (svg) {
+      svg.removeAttribute("title");
+      if (svg.getAttribute("style") === "" || svg.getAttribute("style") === "cursor: pointer;") svg.removeAttribute("style");
+    });
+    if (wasEditing) addChrome();
+    return "<!doctype html>\n" + clone.outerHTML + "\n";
+  }
+
+  function toBase64(str) {
+    var bytes = new TextEncoder().encode(str);
+    var bin = "", chunk = 0x8000;
+    for (var i = 0; i < bytes.length; i += chunk) {
+      bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    }
+    return btoa(bin);
+  }
+
+  /* ---------------- GitHub settings ---------------- */
+  function guessRepo() {
+    var host = location.hostname || "";
+    if (!/\.github\.io$/.test(host)) return { owner: "", repo: "" };
+    var owner = host.replace(".github.io", "");
+    var seg = location.pathname.split("/").filter(Boolean);
+    var repo = (seg.length && !/\.html?$/.test(seg[0])) ? seg[0] : owner + ".github.io";
+    return { owner: owner, repo: repo };
+  }
+  function cfg() {
+    var raw = read(LS_GH);
+    var saved = {};
+    try { saved = raw ? JSON.parse(raw) : {}; } catch (e) {}
+    var guess = guessRepo();
+    return {
+      owner:  saved.owner  || guess.owner || "",
+      repo:   saved.repo   || guess.repo  || "",
+      branch: saved.branch || "main",
+      path:   saved.path   || "index.html",
+      token:  saved.token  || ""
+    };
+  }
+
+  function openSettings() {
+    var c = cfg();
+    var veil = el("div", "ed-veil");
+    var dlg = el("div", "ed-dialog");
+    dlg.setAttribute("role", "dialog");
+    dlg.setAttribute("aria-modal", "true");
+
+    var h = el("h3", null, "Save settings");
+    var p = el("p");
+    p.innerHTML = 'Saving commits this page straight back to your repo. You need a ' +
+      '<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">' +
+      'fine-grained access token</a> with <b>Contents: Read and write</b> on this one repository. ' +
+      'It is kept in this browser only — it is never written into the page.';
+    p.setAttribute("data-ed", "");
+
+    function field(label, key, type, placeholder) {
+      var f = el("div", "ed-field");
+      var l = el("label", null, label);
+      var i = el("input");
+      i.type = type || "text";
+      i.value = c[key] || "";
+      if (placeholder) i.placeholder = placeholder;
+      i.dataset.key = key;
+      f.append(l, i);
+      return f;
+    }
+
+    var row = el("div", "ed-row2");
+    row.append(field("Owner (your username)", "owner", "text", "your-username"),
+               field("Repository", "repo", "text", "south-island-loop"));
+    var row2 = el("div", "ed-row2");
+    row2.append(field("Branch", "branch", "text", "main"),
+                field("File path", "path", "text", "index.html"));
+    var tok = field("Access token", "token", "password", "github_pat_…");
+
+    var actions = el("div", "ed-actions");
+    var forget = mini("forget token", "danger", function () {
+      var next = cfg(); next.token = "";
+      store(LS_GH, JSON.stringify(next));
+      veil.remove();
+      say("Token forgotten");
+    });
+    var cancel = el("button", "ed-btn", "Cancel"); cancel.type = "button";
+    var ok = el("button", "ed-btn primary", "Save settings"); ok.type = "button";
+    actions.append(forget, cancel, ok);
+
+    cancel.addEventListener("click", function () { veil.remove(); });
+    ok.addEventListener("click", function () {
+      var next = {};
+      $$("input", dlg).forEach(function (i) { next[i.dataset.key] = i.value.trim(); });
+      store(LS_GH, JSON.stringify(next));
+      veil.remove();
+      say("Settings saved");
+    });
+    veil.addEventListener("click", function (e) { if (e.target === veil) veil.remove(); });
+    document.addEventListener("keydown", function esc(e) {
+      if (e.key === "Escape") { veil.remove(); document.removeEventListener("keydown", esc); }
+    });
+
+    dlg.append(h, p, row, row2, tok, actions);
+    veil.appendChild(dlg);
+    body.appendChild(veil);
+    $("input", dlg).focus();
+  }
+  gearBtn.addEventListener("click", openSettings);
+
+  /* ---------------- save to GitHub ---------------- */
+  function ghHeaders(token) {
+    return {
+      "Authorization": "Bearer " + token,
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28"
+    };
+  }
+
+  function save() {
+    var c = cfg();
+    if (!c.token || !c.owner || !c.repo) {
+      say("Add your repo and token in Settings first", "bad");
+      openSettings();
+      return;
+    }
+    saveBtn.disabled = true;
+    say("Saving…");
+
+    var api = "https://api.github.com/repos/" + c.owner + "/" + c.repo +
+              "/contents/" + c.path.split("/").map(encodeURIComponent).join("/");
+    var content = toBase64(serialize());
+
+    fetch(api + "?ref=" + encodeURIComponent(c.branch), { headers: ghHeaders(c.token) })
+      .then(function (r) {
+        if (r.status === 404) return null;
+        if (r.status === 401) throw new Error("GitHub rejected the token. Check it hasn't expired.");
+        if (!r.ok) throw new Error("Couldn't read the file on GitHub (" + r.status + "). Check owner, repo, branch and path.");
+        return r.json();
+      })
+      .then(function (existing) {
+        var payload = {
+          message: "Update itinerary from the live page",
+          content: content,
+          branch: c.branch
+        };
+        if (existing && existing.sha) payload.sha = existing.sha;
+        return fetch(api, {
+          method: "PUT",
+          headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(c.token)),
+          body: JSON.stringify(payload)
+        });
+      })
+      .then(function (r) {
+        if (r.status === 409) throw new Error("The file changed on GitHub since this page loaded. Reload, then edit again.");
+        if (r.status === 403) throw new Error("Token doesn't have Contents: Read and write on this repo.");
+        if (!r.ok) return r.text().then(function (t) { throw new Error("GitHub said " + r.status + ". " + t.slice(0, 140)); });
+        dirty = false;
+        say("Saved — live in about a minute", "ok");
+        setTimeout(function () { if (!dirty) say(editing ? "Click any text to edit it" : ""); }, 6000);
+      })
+      .catch(function (err) { say(err.message, "bad"); })
+      .then(function () { saveBtn.disabled = false; });
+  }
+  saveBtn.addEventListener("click", save);
+
+  /* Ctrl/Cmd+S saves while editing */
+  document.addEventListener("keydown", function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s" && editing) {
+      e.preventDefault(); save();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
