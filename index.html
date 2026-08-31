@@ -68,19 +68,6 @@
   body{margin:0}
   img{max-width:100%}
   [hidden]{display:none!important}
-  .themetoggle{
-    position:fixed;top:14px;right:14px;z-index:50;
-    display:inline-flex;align-items:center;gap:7px;
-    background:var(--surface);color:var(--muted);
-    border:1px solid var(--line-soft);border-radius:100px;
-    padding:7px 13px;cursor:pointer;
-    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
-    letter-spacing:.12em;text-transform:uppercase;
-    box-shadow:var(--shadow);
-  }
-  .themetoggle:hover{color:var(--ink);border-color:var(--line)}
-  .themetoggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  @media print{.themetoggle{display:none}}
 
   *{box-sizing:border-box}
   body{
@@ -297,13 +284,128 @@
   @media (prefers-reduced-motion:no-preference){
     .stop{transition:transform .18s ease}
   }
+
+  /* ---------- editor chrome ---------- */
+  .ed-cluster{
+    position:fixed;top:14px;right:14px;z-index:60;
+    display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px;
+  }
+  .ed-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--surface);color:var(--muted);
+    border:1px solid var(--line-soft);border-radius:100px;
+    padding:7px 13px;cursor:pointer;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;
+    box-shadow:var(--shadow);white-space:nowrap;
+  }
+  .ed-btn:hover{color:var(--ink);border-color:var(--line)}
+  .ed-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .ed-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  :root[data-theme="dark"] .ed-btn.on,
+  .ed-btn.on{color:var(--surface)}
+  .ed-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+  .ed-btn.primary:hover{color:var(--surface);opacity:.9}
+  .ed-btn[disabled]{opacity:.5;cursor:default}
+  .ed-status{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.1em;text-transform:uppercase;
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:100px;
+    padding:7px 13px;box-shadow:var(--shadow);color:var(--muted);max-width:60vw;
+  }
+  .ed-status.ok{color:var(--accent);border-color:var(--accent-soft)}
+  .ed-status.bad{color:var(--gold);border-color:var(--gold-soft);text-transform:none;letter-spacing:0;font-size:11.5px}
+
+  .wrap{padding-top:58px}   /* clears the fixed toolbar */
+
+  /* editable state */
+  body.editing [contenteditable]{
+    outline:1px dashed var(--line);outline-offset:3px;border-radius:3px;
+  }
+  body.editing [contenteditable]:hover{outline-color:var(--accent)}
+  body.editing [contenteditable]:focus{
+    outline:2px solid var(--accent);outline-offset:3px;background:var(--accent-soft);
+  }
+  body.editing .doings li svg{cursor:pointer;outline:1px dashed transparent;border-radius:3px}
+  body.editing .doings li svg:hover{outline-color:var(--accent)}
+  body.editing .book,body.editing .bee,body.editing .doings li{position:relative}
+
+  .ed-x{
+    position:absolute;top:6px;right:6px;z-index:2;
+    width:22px;height:22px;line-height:1;border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--surface);border:1px solid var(--line);color:var(--muted);
+    cursor:pointer;font-size:13px;padding:0;
+  }
+  .ed-x:hover{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
+  .doings li .ed-x{position:static;flex:none;margin-left:auto;align-self:flex-start}
+
+  .ed-tools{
+    display:flex;flex-wrap:wrap;gap:7px;align-items:center;
+    padding:10px 18px;border-top:1px dashed var(--line);
+    background:var(--surface-2);
+  }
+  .ed-mini{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:100px;
+    padding:5px 11px;cursor:pointer;color:var(--muted);
+  }
+  .ed-mini:hover{color:var(--ink);border-color:var(--accent)}
+  .ed-mini.danger:hover{color:var(--gold);border-color:var(--gold)}
+  .ed-seg{
+    display:inline-flex;align-items:center;gap:7px;margin-left:4px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  }
+  .ed-seg input{
+    width:56px;padding:4px 7px;border-radius:7px;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
+  }
+  .ed-add{
+    display:block;width:100%;margin:4px 0 0;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    background:transparent;border:1px dashed var(--line);border-radius:12px;
+    padding:12px;cursor:pointer;
+  }
+  .ed-add:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* settings dialog */
+  .ed-veil{
+    position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,20,18,.5);padding:20px;
+  }
+  .ed-dialog{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.5);
+    width:min(460px,100%);max-height:90vh;overflow:auto;padding:22px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .ed-dialog h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .ed-dialog p{margin:0;font-family:"Newsreader",Georgia,serif;font-size:15.5px;line-height:1.45;color:var(--muted)}
+  .ed-dialog p a{color:var(--accent)}
+  .ed-field{display:flex;flex-direction:column;gap:5px}
+  .ed-field label{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  }
+  .ed-field input{
+    padding:9px 11px;border-radius:9px;border:1px solid var(--line);
+    background:var(--ground);color:var(--ink);font-size:14px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  .ed-field input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .ed-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ed-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;margin-top:2px}
+
+  @media print{
+    .ed-cluster,.ed-tools,.ed-x,.ed-add,.ed-status{display:none!important}
+  }
 </style>
 </head>
 <body>
-
-<button class="themetoggle" id="themetoggle" type="button" aria-label="Switch between light and dark">
-  <span id="themelabel">Dark</span>
-</button>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -785,29 +887,533 @@
 </div>
 
 <script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById('themetoggle');
-    var label = document.getElementById('themelabel');
-    var saved = null;
-    try { saved = localStorage.getItem('sil-theme'); } catch (e) {}
-    if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+/* =====================================================================
+   South Island Loop — page editor
+   Everything below is self-contained. It adds:
+     • a light/dark toggle
+     • an Edit mode (click any text to change it, add/remove rows)
+     • Save, which commits this whole file back to GitHub
+   Editor controls are built at runtime and stripped out before saving,
+   so the file that lands in your repo stays clean.
+   ===================================================================== */
+(function () {
+  "use strict";
 
-    function isDark() {
-      var t = root.getAttribute('data-theme');
-      if (t) return t === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    function sync() { label.textContent = isDark() ? 'Light' : 'Dark'; }
-    sync();
+  var LS_THEME = "sil-theme";
+  var LS_GH    = "sil-github";
+  var LS_DOC   = "sil-doc";
+  var ICONS = ["i-star","i-mtn","i-walk","i-boat","i-steam","i-heli",
+               "i-bird","i-water","i-town","i-car","i-plane","i-alert","i-cal"];
 
-    btn.addEventListener('click', function () {
-      var next = isDark() ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('sil-theme', next); } catch (e) {}
-      sync();
+  var root = document.documentElement;
+  var body = document.body;
+  var editing = false;
+  var dirty = false;
+
+  /* ---------------- tiny helpers ---------------- */
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    n.setAttribute("data-ed", "");
+    return n;
+  }
+  function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+  function store(key, val) {
+    try { val === null ? localStorage.removeItem(key) : localStorage.setItem(key, val); } catch (e) {}
+  }
+  function read(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+  /* ---------------- toolbar ---------------- */
+  var cluster = el("div", "ed-cluster");
+  var themeBtn = el("button", "ed-btn"); themeBtn.type = "button";
+  var editBtn  = el("button", "ed-btn"); editBtn.type = "button"; editBtn.textContent = "Edit";
+  var saveBtn  = el("button", "ed-btn primary"); saveBtn.type = "button"; saveBtn.textContent = "Save to GitHub"; saveBtn.hidden = true;
+  var gearBtn  = el("button", "ed-btn"); gearBtn.type = "button"; gearBtn.textContent = "Settings"; gearBtn.hidden = true;
+  var status   = el("div", "ed-status"); status.hidden = true;
+  cluster.append(status, themeBtn, gearBtn, saveBtn, editBtn);
+  body.appendChild(cluster);
+
+  /* ---------------- this-device autosave ---------------- */
+  /* Edits are kept in this browser automatically, with no setup at all.
+     "Save to GitHub" is the optional extra that makes them permanent and
+     visible to everyone. */
+  var saveTimer = null;
+
+  function cleanWrap() {
+    var w = document.querySelector(".wrap");
+    if (!w) return "";
+    var c = w.cloneNode(true);
+    Array.prototype.forEach.call(c.querySelectorAll("[data-ed]"), function (n) { n.remove(); });
+    Array.prototype.forEach.call(c.querySelectorAll("[contenteditable]"), function (n) {
+      n.removeAttribute("contenteditable"); n.removeAttribute("spellcheck");
     });
-  })();
+    Array.prototype.forEach.call(c.querySelectorAll("svg[style]"), function (n) {
+      var v = n.getAttribute("style");
+      if (v === "" || v === "cursor: pointer;") n.removeAttribute("style");
+    });
+    Array.prototype.forEach.call(c.querySelectorAll('[title="Click to change the icon"]'), function (n) {
+      n.removeAttribute("title");
+    });
+    return c.innerHTML;
+  }
+
+  function saveLocal() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      var wasEditing = editing;
+      if (wasEditing) removeChrome();
+      var ok = true;
+      try { localStorage.setItem(LS_DOC, cleanWrap()); } catch (e) { ok = false; }
+      if (wasEditing) addChrome();
+      say(ok ? "Saved on this device" : "Couldn't save — browser storage is full or blocked", ok ? "ok" : "bad");
+    }, 400);
+  }
+
+  function resetToFile() {
+    store(LS_DOC, null);
+    location.reload();
+  }
+
+  function say(msg, kind) {
+    status.hidden = !msg;
+    status.textContent = msg || "";
+    status.className = "ed-status" + (kind ? " " + kind : "");
+    status.setAttribute("data-ed", "");
+  }
+
+  /* restore this device's saved copy */
+  var localCopy = read(LS_DOC);
+  var restored = false;
+  if (localCopy) {
+    var wrapEl = document.querySelector(".wrap");
+    if (wrapEl) { wrapEl.innerHTML = localCopy; restored = true; }
+  }
+
+  if (restored) say("Showing your edited version");
+
+  /* ---------------- theme ---------------- */
+  var saved = read(LS_THEME);
+  if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+  function isDark() {
+    var t = root.getAttribute("data-theme");
+    return t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function syncTheme() { themeBtn.textContent = isDark() ? "Light" : "Dark"; }
+  syncTheme();
+  themeBtn.addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    store(LS_THEME, next);
+    syncTheme();
+  });
+
+  /* ---------------- what is editable ---------------- */
+  var EDITABLE = [
+    "h1", ".dek", ".stat b", ".stat small", "h2", ".panel-head p",
+    ".leg h3", ".leg p", ".legend span",
+    ".stop-top h3", ".dates", ".nights", ".doings li > span",
+    ".seg .figs", ".seg .via", ".flightbar span",
+    ".book h4", ".book p", ".book .when", ".book .price",
+    ".bee h4", ".bee p", "footer"
+  ].join(",");
+
+  function plainPaste(e) {
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+    document.execCommand("insertText", false, text);
+  }
+
+  function markDirty() {
+    dirty = true;
+    say("Saving…");
+    saveLocal();
+  }
+
+  /* ---------------- row templates ---------------- */
+  function tpl(html) {
+    var t = document.createElement("template");
+    t.innerHTML = html.trim();
+    return t.content;
+  }
+  var T = {
+    activity: '<li><svg><use href="#i-town"></use></svg><span>Something to do <span class="note">— a detail</span></span></li>',
+    seg: '<div class="row">' +
+           '<div class="rail seg-rail"><div class="dot"></div></div>' +
+           '<div class="seg">' +
+             '<span class="figs"><b>From → To</b></span>' +
+             '<div class="bar"><span class="lv2" style="width:40%"></span></div>' +
+             '<span class="figs">2 hr 00 · 150 km</span>' +
+             '<span class="via">via somewhere</span>' +
+           '</div></div>',
+    stop: '<div class="row">' +
+            '<div class="rail"><div class="dot"></div></div>' +
+            '<div class="stopwrap"><article class="stop">' +
+              '<div class="stop-top"><span class="dates">Day 00 Mon</span><h3>New stop</h3><span class="nights">1 night</span></div>' +
+              '<ul class="doings"><li><svg><use href="#i-town"></use></svg><span>Something to do <span class="note">— a detail</span></span></li></ul>' +
+            '</article></div></div>',
+    book: '<div class="book">' +
+            '<span class="when">Date · Place</span>' +
+            '<h4>Thing to book</h4>' +
+            '<p>Why it needs booking early.</p>' +
+            '<span class="price">$0 ea</span></div>',
+    bee: '<div class="bee"><h4><svg><use href="#i-alert"></use></svg>Something to know</h4>' +
+         '<p>The detail that saves you a headache.</p></div>'
+  };
+
+  /* ---------------- build / tear down edit controls ---------------- */
+  function xButton(onClick, title) {
+    var b = el("button", "ed-x", "×");
+    b.type = "button";
+    b.title = title || "Remove";
+    b.setAttribute("aria-label", title || "Remove");
+    b.addEventListener("click", function (e) { e.preventDefault(); onClick(); markDirty(); });
+    return b;
+  }
+  function mini(label, cls, onClick) {
+    var b = el("button", "ed-mini" + (cls ? " " + cls : ""), label);
+    b.type = "button";
+    b.addEventListener("click", function (e) { e.preventDefault(); onClick(); markDirty(); });
+    return b;
+  }
+
+  function hoursToBar(barSpan, hours) {
+    var pct = Math.max(4, Math.min(100, (hours / 5) * 100));
+    barSpan.style.width = pct.toFixed(0) + "%";
+    barSpan.className = hours < 1 ? "lv1" : (hours < 4 ? "lv2" : "lv3");
+  }
+
+  function addChrome() {
+    /* text fields */
+    $$(EDITABLE).forEach(function (n) {
+      n.setAttribute("contenteditable", "true");
+      n.setAttribute("spellcheck", "false");
+      n.addEventListener("paste", plainPaste);
+    });
+
+    /* icon cycling */
+    $$(".doings li svg, .bee h4 svg").forEach(function (svg) {
+      svg.style.cursor = "pointer";
+      svg.title = "Click to change the icon";
+    });
+
+    /* activity rows */
+    $$(".doings li").forEach(function (li) {
+      li.appendChild(xButton(function () { li.remove(); }, "Remove this line"));
+    });
+
+    /* stop cards */
+    $$(".timeline .stop").forEach(function (stop) {
+      var tools = el("div", "ed-tools");
+      var list = $(".doings", stop);
+      tools.appendChild(mini("+ activity", "", function () {
+        if (list) list.appendChild(tpl(T.activity).firstElementChild);
+        refresh();
+      }));
+      tools.appendChild(mini("+ stop below", "", function () {
+        var row = stop.closest(".row");
+        row.after(tpl(T.stop).firstElementChild);
+        row.after(tpl(T.seg).firstElementChild);
+        refresh();
+      }));
+      tools.appendChild(mini("delete stop", "danger", function () {
+        var row = stop.closest(".row");
+        var prev = row.previousElementSibling;
+        if (prev && $(".seg", prev)) prev.remove();
+        row.remove();
+        refresh();
+      }));
+      stop.appendChild(tools);
+    });
+
+    /* drive bars */
+    $$(".timeline .seg").forEach(function (seg) {
+      var span = $(".bar span", seg);
+      if (!span) return;
+      var current = (parseFloat(span.style.width) || 40) / 100 * 5;
+      var wrap = el("span", "ed-seg");
+      var lab = el("span", null, "bar hrs");
+      var inp = el("input");
+      inp.type = "number"; inp.step = "0.25"; inp.min = "0"; inp.max = "12";
+      inp.value = current.toFixed(2).replace(/\.?0+$/, "");
+      inp.addEventListener("input", function () {
+        var h = parseFloat(inp.value);
+        if (!isNaN(h)) { hoursToBar(span, h); markDirty(); }
+      });
+      wrap.append(lab, inp);
+      seg.appendChild(wrap);
+    });
+
+    /* booking cards */
+    $$(".board .book").forEach(function (card) {
+      card.appendChild(xButton(function () { card.remove(); }, "Remove this booking"));
+    });
+    var board = $(".board");
+    if (board) {
+      var addBook = el("button", "ed-add", "+ add a booking");
+      addBook.type = "button";
+      addBook.style.gridColumn = "1 / -1";
+      addBook.addEventListener("click", function (e) {
+        e.preventDefault();
+        board.insertBefore(tpl(T.book).firstElementChild, addBook);
+        refresh(); markDirty();
+      });
+      board.appendChild(addBook);
+    }
+
+    /* things to know */
+    $$(".bees .bee").forEach(function (b) {
+      b.appendChild(xButton(function () { b.remove(); }, "Remove this note"));
+    });
+    var bees = $(".bees");
+    if (bees) {
+      var addBee = el("button", "ed-add", "+ add a note");
+      addBee.type = "button";
+      addBee.style.gridColumn = "1 / -1";
+      addBee.style.margin = "0";
+      addBee.addEventListener("click", function (e) {
+        e.preventDefault();
+        bees.insertBefore(tpl(T.bee).firstElementChild, addBee);
+        refresh(); markDirty();
+      });
+      bees.appendChild(addBee);
+    }
+  }
+
+  function removeChrome() {
+    $$("[data-ed]").forEach(function (n) {
+      if (n === cluster || cluster.contains(n)) return;
+      n.remove();
+    });
+    $$("[contenteditable]").forEach(function (n) {
+      n.removeAttribute("contenteditable");
+      n.removeAttribute("spellcheck");
+      n.removeEventListener("paste", plainPaste);
+    });
+    $$(".doings li svg, .bee h4 svg").forEach(function (svg) {
+      svg.style.cursor = ""; svg.removeAttribute("title");
+    });
+  }
+
+  function refresh() { removeChrome(); addChrome(); }
+
+  /* icon cycling (delegated so it survives refresh) */
+  document.addEventListener("click", function (e) {
+    if (!editing) return;
+    var svg = e.target.closest && e.target.closest(".doings li svg, .bee h4 svg");
+    if (!svg) return;
+    var use = svg.querySelector("use");
+    if (!use) return;
+    var cur = (use.getAttribute("href") || use.getAttribute("xlink:href") || "").replace("#", "");
+    var next = ICONS[(ICONS.indexOf(cur) + 1) % ICONS.length];
+    use.setAttribute("href", "#" + next);
+    use.removeAttribute("xlink:href");
+    markDirty();
+  });
+
+  document.addEventListener("input", function (e) {
+    if (editing && e.target.isContentEditable) markDirty();
+  });
+
+  /* ---------------- edit mode ---------------- */
+  function setEditing(on) {
+    editing = on;
+    body.classList.toggle("editing", on);
+    editBtn.textContent = on ? "Done" : "Edit";
+    editBtn.classList.toggle("on", on);
+    saveBtn.hidden = !on;
+    gearBtn.hidden = !on;
+    if (on) { addChrome(); say(dirty ? "Saved on this device" : "Click any text to edit it"); }
+    else { removeChrome(); say(dirty ? "Saved on this device" : (restored ? "Showing your edited version" : "")); }
+  }
+  editBtn.addEventListener("click", function () { setEditing(!editing); });
+
+  /* ---------------- serialise the page ---------------- */
+  function serialize() {
+    var wasEditing = editing;
+    if (wasEditing) removeChrome();
+    var clone = root.cloneNode(true);
+    clone.removeAttribute("data-theme");
+    $$("[data-ed]", clone).forEach(function (n) { n.remove(); });
+    $$("[contenteditable]", clone).forEach(function (n) {
+      n.removeAttribute("contenteditable");
+      n.removeAttribute("spellcheck");
+    });
+    var b = clone.querySelector("body");
+    if (b) { b.classList.remove("editing"); if (!b.className) b.removeAttribute("class"); }
+    $$(".doings li svg, .bee h4 svg", clone).forEach(function (svg) {
+      svg.removeAttribute("title");
+      if (svg.getAttribute("style") === "" || svg.getAttribute("style") === "cursor: pointer;") svg.removeAttribute("style");
+    });
+    if (wasEditing) addChrome();
+    return "<!doctype html>\n" + clone.outerHTML + "\n";
+  }
+
+  function toBase64(str) {
+    var bytes = new TextEncoder().encode(str);
+    var bin = "", chunk = 0x8000;
+    for (var i = 0; i < bytes.length; i += chunk) {
+      bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    }
+    return btoa(bin);
+  }
+
+  /* ---------------- GitHub settings ---------------- */
+  function guessRepo() {
+    var host = location.hostname || "";
+    if (!/\.github\.io$/.test(host)) return { owner: "", repo: "" };
+    var owner = host.replace(".github.io", "");
+    var seg = location.pathname.split("/").filter(Boolean);
+    var repo = (seg.length && !/\.html?$/.test(seg[0])) ? seg[0] : owner + ".github.io";
+    return { owner: owner, repo: repo };
+  }
+  function cfg() {
+    var raw = read(LS_GH);
+    var saved = {};
+    try { saved = raw ? JSON.parse(raw) : {}; } catch (e) {}
+    var guess = guessRepo();
+    return {
+      owner:  saved.owner  || guess.owner || "",
+      repo:   saved.repo   || guess.repo  || "",
+      branch: saved.branch || "main",
+      path:   saved.path   || "index.html",
+      token:  saved.token  || ""
+    };
+  }
+
+  function openSettings() {
+    var c = cfg();
+    var veil = el("div", "ed-veil");
+    var dlg = el("div", "ed-dialog");
+    dlg.setAttribute("role", "dialog");
+    dlg.setAttribute("aria-modal", "true");
+
+    var h = el("h3", null, "Save settings");
+    var p = el("p");
+    p.innerHTML = 'Your edits already save automatically in this browser. This is the optional ' +
+      'extra: it commits the page back to your repo, so the changes are permanent and everyone ' +
+      'sees them. You need a <a href="https://github.com/settings/personal-access-tokens/new" ' +
+      'target="_blank" rel="noopener">fine-grained access token</a> with <b>Contents: Read and ' +
+      'write</b> on this one repository. It stays in this browser and is never written into the page.';
+    p.setAttribute("data-ed", "");
+
+    function field(label, key, type, placeholder) {
+      var f = el("div", "ed-field");
+      var l = el("label", null, label);
+      var i = el("input");
+      i.type = type || "text";
+      i.value = c[key] || "";
+      if (placeholder) i.placeholder = placeholder;
+      i.dataset.key = key;
+      f.append(l, i);
+      return f;
+    }
+
+    var row = el("div", "ed-row2");
+    row.append(field("Owner (your username)", "owner", "text", "your-username"),
+               field("Repository", "repo", "text", "south-island-loop"));
+    var row2 = el("div", "ed-row2");
+    row2.append(field("Branch", "branch", "text", "main"),
+                field("File path", "path", "text", "index.html"));
+    var tok = field("Access token", "token", "password", "github_pat_…");
+
+    var actions = el("div", "ed-actions");
+    var reset = mini("discard my edits", "danger", function () {
+      if (window.confirm("Throw away the edits saved in this browser and go back to the version in the file?")) resetToFile();
+    });
+    var forget = mini("forget token", "danger", function () {
+      var next = cfg(); next.token = "";
+      store(LS_GH, JSON.stringify(next));
+      veil.remove();
+      say("Token forgotten");
+    });
+    var cancel = el("button", "ed-btn", "Cancel"); cancel.type = "button";
+    var ok = el("button", "ed-btn primary", "Save settings"); ok.type = "button";
+    actions.append(reset, forget, cancel, ok);
+
+    cancel.addEventListener("click", function () { veil.remove(); });
+    ok.addEventListener("click", function () {
+      var next = {};
+      $$("input", dlg).forEach(function (i) { next[i.dataset.key] = i.value.trim(); });
+      store(LS_GH, JSON.stringify(next));
+      veil.remove();
+      say("Settings saved");
+    });
+    veil.addEventListener("click", function (e) { if (e.target === veil) veil.remove(); });
+    document.addEventListener("keydown", function esc(e) {
+      if (e.key === "Escape") { veil.remove(); document.removeEventListener("keydown", esc); }
+    });
+
+    dlg.append(h, p, row, row2, tok, actions);
+    veil.appendChild(dlg);
+    body.appendChild(veil);
+    $("input", dlg).focus();
+  }
+  gearBtn.addEventListener("click", openSettings);
+
+  /* ---------------- save to GitHub ---------------- */
+  function ghHeaders(token) {
+    return {
+      "Authorization": "Bearer " + token,
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28"
+    };
+  }
+
+  function save() {
+    var c = cfg();
+    if (!c.token || !c.owner || !c.repo) {
+      say("Add your repo and token in Settings first", "bad");
+      openSettings();
+      return;
+    }
+    saveBtn.disabled = true;
+    say("Saving…");
+
+    var api = "https://api.github.com/repos/" + c.owner + "/" + c.repo +
+              "/contents/" + c.path.split("/").map(encodeURIComponent).join("/");
+    var content = toBase64(serialize());
+
+    fetch(api + "?ref=" + encodeURIComponent(c.branch), { headers: ghHeaders(c.token) })
+      .then(function (r) {
+        if (r.status === 404) return null;
+        if (r.status === 401) throw new Error("GitHub rejected the token. Check it hasn't expired.");
+        if (!r.ok) throw new Error("Couldn't read the file on GitHub (" + r.status + "). Check owner, repo, branch and path.");
+        return r.json();
+      })
+      .then(function (existing) {
+        var payload = {
+          message: "Update itinerary from the live page",
+          content: content,
+          branch: c.branch
+        };
+        if (existing && existing.sha) payload.sha = existing.sha;
+        return fetch(api, {
+          method: "PUT",
+          headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(c.token)),
+          body: JSON.stringify(payload)
+        });
+      })
+      .then(function (r) {
+        if (r.status === 409) throw new Error("The file changed on GitHub since this page loaded. Reload, then edit again.");
+        if (r.status === 403) throw new Error("Token doesn't have Contents: Read and write on this repo.");
+        if (!r.ok) return r.text().then(function (t) { throw new Error("GitHub said " + r.status + ". " + t.slice(0, 140)); });
+        say("Saved to GitHub — live in about a minute", "ok");
+        setTimeout(function () { say("Saved on this device", "ok"); }, 8000);
+      })
+      .catch(function (err) { say(err.message, "bad"); })
+      .then(function () { saveBtn.disabled = false; });
+  }
+  saveBtn.addEventListener("click", save);
+
+  /* Ctrl/Cmd+S saves while editing */
+  document.addEventListener("keydown", function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s" && editing) {
+      e.preventDefault(); save();
+    }
+  });
+})();
 </script>
 
 </body>
